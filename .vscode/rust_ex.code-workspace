@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../01-hello_world"
+		},		
+		{
+			"path": "../02-guessing_game"
+		},
+		{
+			"path": "../03-conditions"
+		}		
+	],
+	"settings": {}
+}

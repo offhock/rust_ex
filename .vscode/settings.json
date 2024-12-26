@@ -1,0 +1,5 @@
+{
+    "rust-client.channel": "stable",
+    "rust-client.rustupPath": "/home/user/.cargo/bin/rustup",
+    "rust-client.runArgs": ["--verbose"]
+}
