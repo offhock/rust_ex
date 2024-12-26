@@ -2,6 +2,20 @@
 [The Rust Programming Language](https://rinthel.github.io/rust-lang-book-ko/ch03-05-control-flow.html)
 
 
+## vscode
+vscode는 workspace로 여는 것이 좋다. 각 프로젝트별 vscode가 제공하는 설정기능을 사용할 수 있다.
+```bash
+$ code .vscode/rust_ex.code-workspace
+```
+
+* 프로젝트 생성 순서
+```bash
+$ cargo new --name hello_world --bin 01-hello_world
+$ cargo new --name guessing_game --bin 02-guessing_game
+$ cargo new --name conditions --bin 03-conditions
+$ cargo new --name ownership --bin 04-ownership
+```
+
 ## New Project for binary
 ```bash
 $ cargo new <프로젝트 이름> --bin
@@ -252,4 +266,32 @@ Run `cargo help build` for more detailed information.
 ## Release Build
 ```bash
 $ cargo build --release
+```
+
+# Rust의 소유권 이해
+* 기본적인 lvalue = rvalue 대입은 move 연산이다.
+* stack에 저장 가능하는 데이터의 대입연산 copy 연산이다.
+* 기본이 move이므로 let을 이용하여 재선언하면 소유권이 이전된다.
+* 함수에 값을 전달하는 것도 소유권을 전달하는 방식과 동일하게 작동한다.
+* 값의 반환도 소유권을 이동시킨다. (여러값을 반환할때는 튜플을 사용한다.)
+* 참조자를 사용할 경우에는 다음의 둘중 한 경우만 가능하다.
+  * 가변참조자 1개만 갖는다.
+  * 불변참조자 여러개를 가진다.
+* 참조자는 항상 유효해야 한다. (러스트는 댕글링 참조가 되지는 않는다.)
+* 슬라이스를 통해서 컬렉센 전체가 아닌 컬렉션의 연속된 일련의 요소를 참조할 수 있다.
+* 슬라이스를 가변참조자로 사용 중일 때 std::io등의 라이브러리가 가변참조자로 접근할 수 없다.
+  * 이는 가변참조자는 항상 1개만 가질 수 있기 때문에 std등의 라이브러리가 가변참조자로 데이터를 접근할 경우 컴파일타임때 에러가 발생한다.
+* 슬라이스를 불변참조자로 사용 중일때 std등의 라이브러리에서 가변참조자로 접근할 수 없다.
+  * 이는 불변참조자는 가변참조자와 함께 사용하지 못하는 규칙이 있으므로 컴파일타임때 확인이 가능하다.
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    let r1 = &s;      // 불변 참조자
+    let r2 = &mut s;  // 가변 참조자
+
+    println!("{}, {}", r1, r2);
+}
+--> 에러발생
 ```

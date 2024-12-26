@@ -8,7 +8,15 @@
 		},
 		{
 			"path": "../03-conditions"
-		}		
+		},
+		{
+			"path": "../04-ownership"
+		}				
 	],
-	"settings": {}
+	"settings": 
+	{
+		"rust-client.channel": "stable",
+		"rust-client.rustupPath": "${env:HOME}/.cargo/bin/rustup",
+		"rust-client.runArgs": ["--verbose"]
+	}	
 }
