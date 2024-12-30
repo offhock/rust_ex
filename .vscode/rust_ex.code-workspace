@@ -11,7 +11,19 @@
 		},
 		{
 			"path": "../04-ownership"
-		}				
+		},
+		{
+			"path": "../05-struct"
+		},
+		{
+			"path": "../06-enum"
+		},	
+		{
+			"path": "../06-if_let"
+		},	
+		{
+			"path": "../07-mod"
+		}	
 	],
 	"settings": 
 	{

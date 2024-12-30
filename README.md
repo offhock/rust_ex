@@ -1,5 +1,5 @@
 # Rust
-[The Rust Programming Language](https://rinthel.github.io/rust-lang-book-ko/ch03-05-control-flow.html)
+[The Rust Programming Language](https://doc.rust-kr.org/)
 
 
 ## vscode
